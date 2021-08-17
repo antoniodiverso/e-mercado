@@ -139,3 +139,12 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+
+#listaProductos {
+
+    font-weight: bold;
+}   
+
+#login{
+  align-items: center;
+}
