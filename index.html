@@ -39,14 +39,16 @@
 
 <body class="text-center">
   <div class="signin">
-    <form action="" method="">
+    <form action="inicio.html" method="">
       <h1>Por favor inicie sesión</h1><br>
 
-      <p>Email: <input type="text" name="email" required></p> <br>
+      <label for="email">Email:</label>
+      <input type="text" name="email" required><br><br>
+  
+      <label for="contraseña">Contraseña:</label>
+      <input type="password" name="contraseña" required><br><br>
 
-      <p>Contraseña: <input type="password" name="contraseña" required></p>
-
-      <button id="ingresar" onclick="window.location ='inicio.html'">ingresar</button>
+      <button id="ingresar">ingresar</button>
 
     </form>
   </div>
