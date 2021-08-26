@@ -148,3 +148,9 @@ a.custom-card:hover {
 #login{
   align-items: center;
 }
+
+#emailLogged{
+color: white;
+border: 2px solid #fff;
+
+}
