@@ -38,21 +38,29 @@
 </head>
 
 <body class="text-center">
-  <div class="signin">
-    <form action="inicio.html" method="">
-      <h1>Por favor inicie sesión</h1><br>
+  <div id="emailLogged" style="display: none;">
 
-      <label for="email">Email:</label>
-      <input type="text" name="email" required><br><br>
-  
-      <label for="contraseña">Contraseña:</label>
-      <input type="password" name="contraseña" required><br><br>
+    <p id="user"></p><br>
 
-      <button id="ingresar">ingresar</button>
+    <button id="salir">Salir</button>
 
-    </form>
   </div>
 
+
+  <div class="signin">
+      <h1>Por favor inicie sesión</h1><br>
+
+      <label for="email">Email:</label><br>
+      <input type="email" id="email"><br><br>
+
+      <label for="contraseña">Contraseña:</label><br>
+      <input type="password" id="contraseña"><br><br>
+
+      <button id="ingresar">Ingresar</button>
+
+
+
+  </div>
 
   <script src="js/init.js"></script>
   <script src="js/login.js"></script>
