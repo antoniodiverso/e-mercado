@@ -59,6 +59,7 @@ document.addEventListener("DOMContentLoaded", function(e){
     emailLogged.style = "display: inline-block";
   }
 
+
   if (document.getElementById("salir")){
     document.getElementById('salir').addEventListener('click', function(){
       localStorage.removeItem('User-Logged');
