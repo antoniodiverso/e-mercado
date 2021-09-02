@@ -18,8 +18,8 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
                         document.getElementById("listaProductos").innerHTML += `
 
-                        <p>Precio: ${valor.cost} </p>
-                        <p>Nombre: ${valor.name} </p>
+                        <p>Precio: ${valor.cost}  </p>
+                        <p>Nombre: ${valor.name}  </p>
                         <p>Descripción: ${valor.description} </p>
                         <hr>
                         ` 
