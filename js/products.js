@@ -1,54 +1,50 @@
+var arrayProductos = [];
+var maxPrecio;
+var minPrecio;
+
+function listaProductos(array) {
+    let contendio = "<br><hr><br>"
+    for (let i = 0; i < array.length; i++ ) {
+        let producto = array[i]
+        //if(((minPrecio == undefined) || (minPrecio != undefined && parseInt(valor.cost)>= minPrecio)) && ((maxPrecio == undefined) || (maxPrecio != undefined && parseInt(valor.cost)<=maxPrecio))){
+
+               contendio +=`<p>Precio: ${producto.cost}  </p>`
+               contendio +=`<p>Nombre: ${producto.name}  </p>`
+               contendio +=`<p>Descripción: ${producto.description} </p>`
+               contendio +=`<br><hr><br>`
+                    
+    }
+    document.getElementById("listaProductos").innerHTML += contendio;
+}
+
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function (e) {
 
-    var maxPrecio;
-    var minPrecio;
-   
-    function listaProductos(url){
-        fetch(url)
-            .then(respuesta => respuesta.json())
-    
-            .then(datos => {
-                   
-                    for (valor of datos){
+    getJSONData(PRODUCTS_URL).then(function (resultado) {
+        if (resultado.status === "ok") {
+            arrayProductos = resultado.data;
 
-                        if(((minPrecio == undefined) || (minPrecio != undefined && parseInt(valor.cost)>= minPrecio)) && ((maxPrecio == undefined) || (maxPrecio != undefined && parseInt(valor.cost)<=maxPrecio))){
-
-                        document.getElementById("listaProductos").innerHTML += `
-
-                        <p>Precio: ${valor.cost}  </p>
-                        <p>Nombre: ${valor.name}  </p>
-                        <p>Descripción: ${valor.description} </p>
-                        <hr>
-                        ` 
-                            
-                    }
-                    }
-            })
-            .catch(error => alert("Hubo un error: " + error));
-    }
-
-    listaProductos(PRODUCTS_URL);
-
-
-    document.getElementById("botonFiltrar").addEventListener("click", function(){
+            listaProductos(arrayProductos);
+        }
+    })
+    document.getElementById("botonFiltrar").addEventListener("click", function () {
 
         minPrecio = document.getElementById("minimo").value;
         maxPrecio = document.getElementById("maximo").value;
 
-        if((minPrecio != undefined) && (minPrecio != "") && (parseInt(minPrecio))>=0 ){
+        if ((minPrecio != undefined) && (minPrecio != "") && (parseInt(minPrecio)) >= 0) {
             minPrecio = parseInt(minPrecio);
         }
-        else{
+        else {
             minPrecio = undefined;
         }
 
-        if((maxPrecio != undefined) && (maxPrecio != "") && (parseInt(maxPrecio))>=0 ){
+        if ((maxPrecio != undefined) && (maxPrecio != "") && (parseInt(maxPrecio)) >= 0) {
             maxPrecio = parseInt(maxPrecio);
         }
-        else{
+        else {
             maxPrecio = undefined;
         }
 
@@ -58,10 +54,10 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
     })
 
-    document.getElementById("limpiarFiltro").addEventListener("click", function(){
+    document.getElementById("limpiarFiltro").addEventListener("click", function () {
 
-        minPrecio = document.getElementById("minimo").value="";
-        maxPrecio = document.getElementById("maximo").value="";
+        minPrecio = document.getElementById("minimo").value = "";
+        maxPrecio = document.getElementById("maximo").value = "";
 
 
         minPrecio = undefined;
