@@ -6,7 +6,8 @@ function listaProductos(array) {
     let contendio = "<br><hr><br>"
     for (let i = 0; i < array.length; i++ ) {
         let producto = array[i]
-        //if(((minPrecio == undefined) || (minPrecio != undefined && parseInt(valor.cost)>= minPrecio)) && ((maxPrecio == undefined) || (maxPrecio != undefined && parseInt(valor.cost)<=maxPrecio))){
+        if(((minPrecio == undefined) || (minPrecio != undefined && parseInt(producto.cost)>= minPrecio)) 
+        && ((maxPrecio == undefined) || (maxPrecio != undefined && parseInt(producto.cost)<=maxPrecio))){
 
                contendio +=`<p>Precio: ${producto.cost}  </p>`
                contendio +=`<p>Nombre: ${producto.name}  </p>`
@@ -14,7 +15,9 @@ function listaProductos(array) {
                contendio +=`<br><hr><br>`
                     
     }
-    document.getElementById("listaProductos").innerHTML += contendio;
+    
+}
+document.getElementById("listaProductos").innerHTML += contendio;
 }
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
@@ -30,6 +33,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
         }
     })
     document.getElementById("botonFiltrar").addEventListener("click", function () {
+        document.getElementById("listaProductos").innerHTML = ''
 
         minPrecio = document.getElementById("minimo").value;
         maxPrecio = document.getElementById("maximo").value;
@@ -49,13 +53,14 @@ document.addEventListener("DOMContentLoaded", function (e) {
         }
 
 
-        listaProductos(PRODUCTS_URL);
+        listaProductos(arrayProductos);
 
 
     })
 
     document.getElementById("limpiarFiltro").addEventListener("click", function () {
-
+        document.getElementById("listaProductos").innerHTML = ''
+        
         minPrecio = document.getElementById("minimo").value = "";
         maxPrecio = document.getElementById("maximo").value = "";
 
@@ -63,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
         minPrecio = undefined;
         maxPrecio = undefined;
 
-        listaProductos(PRODUCTS_URL);
+        listaProductos(arrayProductos);
     })
 
 
