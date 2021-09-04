@@ -71,5 +71,19 @@ document.addEventListener("DOMContentLoaded", function (e) {
         listaProductos(arrayProductos);
     })
 
+    document.getElementById("ordenAscendente").addEventListener('click', function () {
+        document.getElementById("listaProductos").innerHTML = ''
+
+        ordenProductos = arrayProductos.sort((a,b) => a.cost - b.cost);
+        listaProductos(ordenProductos);
+    });
+
+    document.getElementById("ordenDescendente").addEventListener('click', function () {
+        document.getElementById("listaProductos").innerHTML = ''
+        
+        ordenProductos = arrayProductos.sort((a,b) => b.cost - a.cost);
+        listaProductos(ordenProductos);
+    });
+
 
 });
