@@ -85,5 +85,12 @@ document.addEventListener("DOMContentLoaded", function (e) {
         listaProductos(ordenProductos);
     });
 
+    document.getElementById("ordenRelevancia").addEventListener('click', function () {
+        document.getElementById("listaProductos").innerHTML = ''
+        
+        ordenProductos = arrayProductos.sort((a,b) => b.soldCount - a.soldCount);
+        listaProductos(ordenProductos);
+    });
+
 
 });
