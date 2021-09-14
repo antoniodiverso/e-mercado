@@ -25,17 +25,33 @@
       <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
     </div>
   </nav>
-  <form action="">
     <p>Dejá tu comentario! </p>
     <textarea name="comentarios" id="comentarios" cols="30" rows="10"></textarea><br><br>
     <p>Puntuación: </p>
-    <span class="fa fa-star " id="estrella1"></span>
-<span class="fa fa-star " id="estrella2"></span>
-<span class="fa fa-star " id="estrella3"></span>
-<span class="fa fa-star" id="estrella4"></span>
-<span class="fa fa-star" id="estrella5"></span><br><br>
+
+    <input type="radio" id="radioEstrella1" name="rating" value="1" hidden>
+    <label for="radioEstrella1" title="estrella1">
+    <i class="fa fa-star " id="estrella1"></i>
+    </label>
+    <input type="radio" id="radioEstrella2" name="rating" value="2" hidden>
+    <label for="radioEstrella2" title="estrella2">
+    <i class="fa fa-star " id="estrella2"></i>
+    </label>
+    <input type="radio" id="radioEstrella3" name="rating" value="3" hidden>
+    <label for="radioEstrella3" title="estrella3">
+    <i class="fa fa-star " id="estrella3"></i>
+    </label>
+    <input type="radio" id="radioEstrella4" name="rating" value="4" hidden>
+    <label for="radioEstrella4" title="estrella4">
+    <i class="fa fa-star " id="estrella4"></i>
+    </label>
+    <input type="radio" id="radioEstrella5" name="rating" value="5" hidden>
+    <label for="radioEstrella5" title="estrella5">
+    <i class="fa fa-star " id="estrella5"></i>
+    </label>
+    
+<br><br>
     <button id='submitComentario'>Enviar</button>
-  </form>
   <footer class="text-muted">
     <div class="container">
       <p class="float-right">
