@@ -12,6 +12,7 @@ function listaProductos(array) {
                contendio +=`<p>Precio: ${producto.cost}  </p>`
                contendio +=`<p>Nombre: ${producto.name}  </p>`
                contendio +=`<p>Descripción: ${producto.description} </p>`
+               contendio +=`<button id="verLibro" onclick=window.location='product-info.html'>Ver más</button>`
                contendio +=`<br><hr><br>`
                     
     }
