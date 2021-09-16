@@ -1,21 +1,28 @@
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
-var arrayInfoProducto = [];
+var infoProducto;
 
-function listaInfoProducto(array) {
-  let contendio = ""
-  for (let i = 0; i < array.length; i++ ) {
-      let product = array[i]
-             contendio +=`<p>${product.name}</p>`
-             contendio +=`<p>Precio: ${product.cost}  </p>`
-             contendio +=`<p>Descripción</p><br><hr><br>`
-             contendio +=`<p>${product.description}</p>`
-             contendio +=`<button id="volverListaProducto" onclick=window.location='products.html'>Volver a la lista</button>`
-             contendio +=`<br><hr><br>`
+function listaInfoProducto(producto) {
+  let informacion = "<br><hr><br>";
+  let imagenes = "";
+
+  informacion +=`<h1>${producto.name}</h1>`
+  informacion +=`<h2>USD${producto.cost}</h2><br>`
+  informacion +=`<h5>Descripción</h5><hr>`
+  informacion +=`<p>${producto.description}</p><hr>`
+  informacion +=`<button id="volverListaProducto" onclick=window.location='products.html'>Volver a la lista</button>`
+  informacion +=`<br><hr><br>`
+
+  imagenes +=`<img src="img/prod1.jpg" width=15%  alt="">`
+  imagenes +=`<img src="img/prod1_1.jpg" width=15%  alt="">`
+  imagenes +=`<img src="img/prod1_2.jpg" width=15%  alt="">`
+  imagenes +=`<img src="img/prod1_3.jpg" width=15%  alt="">`
+  imagenes +=`<img src="img/prod1_4.jpg" width=15%  alt=""><br><hr>`
                     
-}
-document.getElementById("infoProducto").innerHTML += contendio;
+
+ document.getElementById("infoProducto").innerHTML += informacion;
+ document.getElementById("imagenesInfo").innerHTML += imagenes;
 }
 
 
@@ -23,9 +30,9 @@ document.addEventListener("DOMContentLoaded", function(e){
 
   getJSONData(PRODUCT_INFO_URL).then(function (resultado) {
     if (resultado.status === "ok") {
-      arrayInfoProducto = resultado.data;
+      infoProducto = resultado.data;
 
-        listaInfoProducto(arrayInfoProducto);
+      listaInfoProducto(infoProducto);
     }
 })
 
