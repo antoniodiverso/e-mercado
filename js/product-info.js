@@ -51,6 +51,7 @@ document.getElementById("listaComentarios").innerHTML += comentarios;
 
 
 document.getElementById("submitComentario").addEventListener("click", function (){
+  
   document.getElementById('listaComentarios').innerHTML = "";
 
   let d = new Date();
