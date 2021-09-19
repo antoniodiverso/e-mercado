@@ -2,6 +2,7 @@
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 var infoProducto;
+var arrayComentarios = [];
 
 function listaInfoProducto(producto) {
   let informacion = "<br><hr><br>";
@@ -25,6 +26,46 @@ function listaInfoProducto(producto) {
  document.getElementById("imagenesInfo").innerHTML += imagenes;
 }
 
+function listaComentarios(array){
+let comentarios = "<h5>Comentarios</h5><hr>"
+for (let i = 0; i < array.length; i++ ) {
+  let lista = array[i]
+
+comentarios +=`<p><strong>${lista.user}</strong><p>`
+comentarios +=`<p>${lista.dateTime}</p>`
+comentarios +=`<p>${lista.description}</p>`
+
+for (let e = 1; e <= lista.score; e++ ) {
+  comentarios += `<span class="fa fa-star checked"></span>`
+}
+
+for (let e = lista.score + 1; e <= 5; e++ ) {
+  comentarios += `<span class="fa fa-star"></span>`
+}
+
+comentarios +=`<hr>`
+
+}
+document.getElementById("listaComentarios").innerHTML += comentarios;
+}
+
+
+document.getElementById("submitComentario").addEventListener("click", function (){
+  document.getElementById('listaComentarios').innerHTML = "";
+
+  let d = new Date();
+  let nuevoComentario = {
+    score : parseInt(document.getElementById('selectEstrellas').value),
+    user  : JSON.parse(localStorage.getItem('User-Logged')).email,
+    description : document.getElementById('comentarios').value,
+    dateTime: d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate()+'  '+d.getHours()+':'+d.getMinutes()+':'+d.getSeconds()
+  }
+
+  arrayComentarios.push(nuevoComentario);
+  document.getElementById('comentarios').value = "";
+  listaComentarios(arrayComentarios);
+  
+});
 
 document.addEventListener("DOMContentLoaded", function(e){
 
@@ -34,24 +75,17 @@ document.addEventListener("DOMContentLoaded", function(e){
 
       listaInfoProducto(infoProducto);
     }
-})
+});
 
- document.getElementById("radioEstrella1");
- document.getElementById("radioEstrella2");
- document.getElementById("radioEstrella3");
- document.getElementById("radioEstrella4");
- document.getElementById("radioEstrella5");
+getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function (resultado) {
+  if (resultado.status === "ok") {
+    arrayComentarios = resultado.data;
 
-
+    listaComentarios(arrayComentarios);
+  }
+});
 
 });
 
-document.getElementById("estrella1").addEventListener("click", function (){
 
-  var redioEstrella = document.getElementById("radioEstrella1");
-  var estrella = ddocument.getElementById("estrella1");
 
-  estrella.classList.remove("fa fa-star")
-  estrella.classList.add("fa fa-star checked")
-
-});

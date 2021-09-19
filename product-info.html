@@ -13,6 +13,7 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -36,33 +37,24 @@
   <div id="infoProducto"></div>
   <div id="imagenesInfo"></div>
 
+  <div id="listaComentarios"></div>
+
+  <div id="containerComentarios">
     <p>Dejá tu comentario! </p>
     <textarea name="comentarios" id="comentarios" cols="30" rows="10"></textarea><br><br>
     <p>Puntuación: </p>
-
-    <input type="radio" id="radioEstrella1" name="rating" value="1" hidden>
-    <label for="radioEstrella1" title="estrella1">
-    <i class="fa fa-star " id="estrella1"></i>
-    </label>
-    <input type="radio" id="radioEstrella2" name="rating" value="2" hidden>
-    <label for="radioEstrella2" title="estrella2">
-    <i class="fa fa-star " id="estrella2"></i>
-    </label>
-    <input type="radio" id="radioEstrella3" name="rating" value="3" hidden>
-    <label for="radioEstrella3" title="estrella3">
-    <i class="fa fa-star " id="estrella3"></i>
-    </label>
-    <input type="radio" id="radioEstrella4" name="rating" value="4" hidden>
-    <label for="radioEstrella4" title="estrella4">
-    <i class="fa fa-star " id="estrella4"></i>
-    </label>
-    <input type="radio" id="radioEstrella5" name="rating" value="5" hidden>
-    <label for="radioEstrella5" title="estrella5">
-    <i class="fa fa-star " id="estrella5"></i>
-    </label>
-    
-<br><br>
+    <select name="selectEstrellas" id="selectEstrellas">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+    <br><br>
     <button id='submitComentario'>Enviar</button>
+  </div>
+    
+
   <footer class="text-muted">
     <div class="container">
       <p class="float-right">
