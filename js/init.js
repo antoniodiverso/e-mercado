@@ -49,14 +49,13 @@ document.addEventListener("DOMContentLoaded", function(e){
 
   let emailLogged = document.getElementById('emailLogged');
 
-  let user = document.getElementById('user');
+  let user = document.getElementById('dropdownMenuButton');
 
   if(userLogged){
     userLogged = JSON.parse(userLogged);
 
     user.innerHTML += userLogged.email;
 
-    emailLogged.style = "display: inline-block";
   }
 
 

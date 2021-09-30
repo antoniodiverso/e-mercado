@@ -3,6 +3,7 @@
 //elementos HTML presentes.
 var infoProducto;
 var arrayComentarios = [];
+var 
 
 function listaInfoProducto(producto) {
   let informacion = "<br><hr><br>";
@@ -86,7 +87,13 @@ document.addEventListener("DOMContentLoaded", function (e) {
     }
   });
 
+
+
 });
+
+
+
+
 
 
 
