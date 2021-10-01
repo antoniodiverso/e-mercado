@@ -3,7 +3,8 @@
 //elementos HTML presentes.
 var infoProducto;
 var arrayComentarios = [];
-var 
+var listaProductosRelacionados = [];
+var indiceProductosRelacionados = [];
 
 function listaInfoProducto(producto) {
   let informacion = "<br><hr><br>";
@@ -50,6 +51,22 @@ function listaComentarios(array) {
   document.getElementById("listaComentarios").innerHTML += comentarios;
 }
 
+function productosRelacionados(array1, arrray2){
+  let datos = "<hr><br><h3>Productos Relacionados</h3><hr><br>";
+  for (let i = 0; i < arrray2.length; i++ ) {
+    let producto= array1[arrray2[i]]
+
+  datos += `<h3>${producto.name}</h3>`
+  datos += `<h4>USD${producto.cost}</h4><br>`
+  datos += `<p>${producto.description}</p><hr>`
+  datos += `<img src="${producto.imgSrc}" width=15%  alt=""><hr>`
+
+  }
+
+
+  document.getElementById("productosRelacionados").innerHTML += datos;
+}
+
 
 document.getElementById("submitComentario").addEventListener("click", function () {
 
@@ -86,6 +103,24 @@ document.addEventListener("DOMContentLoaded", function (e) {
       listaComentarios(arrayComentarios);
     }
   });
+
+  getJSONData(PRODUCT_INFO_URL).then(function (resultado) {
+    if (resultado.status === "ok") {
+      indiceProductosRelacionados = resultado.data.relatedProducts;
+
+      getJSONData(PRODUCTS_URL).then(function (resultado1) {
+        if (resultado1.status === "ok") {
+          listaProductosRelacionados = resultado1.data;
+    
+    
+    
+          productosRelacionados(listaProductosRelacionados, indiceProductosRelacionados)
+        }
+      });
+    }
+  });
+
+
 
 
 
