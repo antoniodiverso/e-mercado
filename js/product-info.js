@@ -51,20 +51,43 @@ function listaComentarios(array) {
   document.getElementById("listaComentarios").innerHTML += comentarios;
 }
 
-function productosRelacionados(array1, arrray2){
-  let datos = "<hr><br><h3>Productos Relacionados</h3><hr><br>";
-  for (let i = 0; i < arrray2.length; i++ ) {
-    let producto= array1[arrray2[i]]
-
-  datos += `<h3>${producto.name}</h3>`
-  datos += `<h4>USD${producto.cost}</h4><br>`
-  datos += `<p>${producto.description}</p><hr>`
-  datos += `<img src="${producto.imgSrc}" width=15%  alt=""><hr>`
-
-  }
+function productosRelacionados(array1, arrray2) {
+  let listaCarousel = "";
+  let datos ="<hr><br><h3>Productos Relacionados</h3><hr><br>";
+  for (let i = 0; i < arrray2.length; i++) {
+    let producto = array1[arrray2[i]]
 
 
-  document.getElementById("productosRelacionados").innerHTML += datos;
+
+    if (i == 0){
+      datos += `<div class="carousel-item active">
+        <img src="${producto.imgSrc}" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+        <h3>${producto.name}</h3> 
+        <h4>USD ${producto.cost}</h4>
+        </div>
+        </div>`
+
+      listaCarousel+=`<li data-target="#carouselExampleCaptions" data-slide-to="${i}" class="active"></li>`
+
+    }
+else{
+      datos += `<div class="carousel-item">
+      <img src="${producto.imgSrc}" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+      <h3>${producto.name}</h3> 
+      <h4>USD ${producto.cost}</h4>
+      </div>
+      </div>`
+
+      listaCarousel+=`<li data-target="#carouselExampleCaptions" data-slide-to="${i}"></li>`
+}
+
+
+}
+
+  document.getElementById("carousel-indicators").innerHTML += listaCarousel;
+  document.getElementById("carousel-inner").innerHTML += datos;
 }
 
 
@@ -111,9 +134,9 @@ document.addEventListener("DOMContentLoaded", function (e) {
       getJSONData(PRODUCTS_URL).then(function (resultado1) {
         if (resultado1.status === "ok") {
           listaProductosRelacionados = resultado1.data;
-    
-    
-    
+
+
+
           productosRelacionados(listaProductosRelacionados, indiceProductosRelacionados)
         }
       });
