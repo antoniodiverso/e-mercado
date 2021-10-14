@@ -1,10 +1,12 @@
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
+//<div class="col">${productoCarrito[0].count}</div>
 var infoCarrito;
 
 function mostrarCarrito(productoCarrito) {
     let contenidoCarrito = ""
+    let sub = (productoCarrito[0].unitCost) * (productoCarrito[0].count)
     contenidoCarrito += `
         <div class="container">
 
@@ -27,9 +29,9 @@ function mostrarCarrito(productoCarrito) {
                                 <div class="col-6">${productoCarrito[0].name}</div>
                             </div>
                         </div>
-                        <div class="col">${productoCarrito[0].count}</div>
+                        <div class="col"><input type="number" onchange="calcularSub(${productoCarrito[0].unitCost})" value="${productoCarrito[0].count}" id="numCantidad" name="numCantidad" min="1" style="width: 100%;"></div>
                         <div class="col">${productoCarrito[0].unitCost} UYU</div>
-                        <div class="col">${(productoCarrito[0].unitCost) * (productoCarrito[0].count)} UYU</div>
+                        <div class="col" id="subtotalProductos">${(productoCarrito[0].unitCost) * (productoCarrito[0].count)} UYU</div>
 
                     </div>
                 </div>
@@ -39,7 +41,7 @@ function mostrarCarrito(productoCarrito) {
                     <h2>Importe total</h2>
 
                         <div class="col-6">Total</div>
-                        <div class="col-6">${(productoCarrito[0].unitCost) * (productoCarrito[0].count)} UYU</div>
+                        <div class="col-6" id="totalProductos" >${(productoCarrito[0].unitCost) * (productoCarrito[0].count)} UYU</div>
                         
                         <div class="col-6">Envio</div>
                         <div class="col-6">${(((productoCarrito[0].unitCost) * (productoCarrito[0].count)) * 15 )/100}</div>
@@ -57,6 +59,13 @@ function mostrarCarrito(productoCarrito) {
             </div>`
      
     document.getElementById("contenidoCarrito").innerHTML += contenidoCarrito;
+}
+
+function calcularSub(precioUni){
+let cantidad = parseInt(document.getElementById(`numCantidad`).value);
+subtotal = precioUni * cantidad;
+document.getElementById(`subtotalProductos`).innerHTML = subtotal + " UYU";
+document.getElementById(`totalProductos`).innerHTML = subtotal + " UYU";
 }
 
 
