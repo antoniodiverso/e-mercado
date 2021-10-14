@@ -52,14 +52,36 @@
       </div>     
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 5 (Fecha de entrega: 17/10/2021) y Entrega 7 (Fecha de entrega: 14/11/2021).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
-    </div>
-  </div>
+  <div id="contenidoCarrito"></div>
+  <div class="container" id="contenidoInfoEnvio">
+    <h2>Datos de envío</h2><br>
+    <div class="row">
+         
+
+          <div class="col-2">Calle:</div>
+          <div class="col-10"><input type="text" id="calle" name="calle"style="background-color: lightgrey; width: 20%;"></div>
+
+          <div class="col-2">Número:</div>
+          <div class="col-10"><input type="number" id="numero" name="numero"style="background-color: lightgrey; width: 20%;"></div>
+
+          <div class="col-2">Esquina:</div>
+          <div class="col-10"><input type="text" id="esquina" name="esquina"style="background-color: lightgrey; width: 20%;"></div>
+
+          <div class="col-2">País:</div>
+          <div class="col-10"><input type="text" id="pais" name="pais"style="background-color: lightgrey; width: 20%;"></div>
+
+          <div class="col-2">Tipo de envío:</div>
+          <div class="col-10">
+          <select name="selectEnvio" id="selectEnvio">
+          <option value="1">Premium (2-5 días)</option>
+          <option value="2">Express (5-8 días)</option>
+          <option value="3">Standar (12-15 días)</option>
+        </select>
+        </div>
+
+      </div>
+   
+
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>
