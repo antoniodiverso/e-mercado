@@ -14,7 +14,7 @@ function listaInfoProducto(producto) {
   informacion += `<h2>USD${producto.cost}</h2><br>`
   informacion += `<h5>Descripción</h5><hr>`
   informacion += `<p>${producto.description}</p><hr>`
-  informacion += `<button id="volverListaProducto" onclick=window.location='products.html'>Volver a la lista</button>`
+  informacion += `<button class="btn btn-secondary" id="volverListaProducto" onclick=window.location='products.html'>Volver a la lista</button>`
   informacion += `<br><hr><br>`
 
   imagenes += `<img src="img/prod1.jpg" width=15%  alt="">`

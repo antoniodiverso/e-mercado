@@ -43,13 +43,6 @@ function mostrarCarrito(productoCarrito) {
                         <div class="col-6">Total</div>
                         <div class="col-6" id="totalProductos" >${(productoCarrito[0].unitCost) * (productoCarrito[0].count)} UYU</div>
                         
-                        <div class="col-6">Envio</div>
-                        <div class="col-6">${(((productoCarrito[0].unitCost) * (productoCarrito[0].count)) * 15 )/100}</div>
-
-                        <div class="col-6">Gran Total</div>
-                        <div class="col-6">${((productoCarrito[0].unitCost) * (productoCarrito[0].count)) + ((((productoCarrito[0].unitCost) * (productoCarrito[0].count)) * 15 )/100)}</div>
-
-              
                         </div>
                         </div>
             </div>
@@ -67,6 +60,7 @@ subtotal = precioUni * cantidad;
 document.getElementById(`subtotalProductos`).innerHTML = subtotal + " UYU";
 document.getElementById(`totalProductos`).innerHTML = subtotal + " UYU";
 }
+
 
 
 

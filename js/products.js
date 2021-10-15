@@ -9,11 +9,21 @@ function listaProductos(array) {
         if(((minPrecio == undefined) || (minPrecio != undefined && parseInt(producto.cost)>= minPrecio)) 
         && ((maxPrecio == undefined) || (maxPrecio != undefined && parseInt(producto.cost)<=maxPrecio))){
 
-               contendio +=`<p>Precio: ${producto.cost}  </p>`
-               contendio +=`<p>Nombre: ${producto.name}  </p>`
-               contendio +=`<p>Descripción: ${producto.description} </p>`
-               contendio +=`<button id="verLibro" onclick=window.location='product-info.html'>Ver más</button>`
-               contendio +=`<br><hr><br>`
+               contendio +=
+  
+
+             
+               
+               `<div class="row">
+               <div class="col-2"><img src="` + producto.imgSrc + `" alt="` + producto.description + `" class="img-thumbnail"></div>
+               <div class="col">
+               <p>Precio: ${producto.cost}  </p>
+               <p>Nombre: ${producto.name}  </p>
+               <p>Descripción: ${producto.description} </p>
+               <button class="btn btn-secondary" id="verLibro" onclick=window.location='product-info.html'>Ver más</button>
+               <br><hr><br>
+               </div>
+               </div>`
                     
     }
     
