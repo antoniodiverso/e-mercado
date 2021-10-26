@@ -41,7 +41,8 @@
       <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
       <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
           Usuario:
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -49,17 +50,65 @@
           <a class="dropdown-item" href="cart.html">Mi Carrito</a>
           <a class="dropdown-item" href="#" id="salir">Salir</a>
         </div>
-      </div>     
+      </div>
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 6 (Fecha de entrega: 31/10/2021).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
-    </div>
-  </div>
+
+  <div class="container" id="contenidoPerfil">
+    <br>
+    <div class="row">
+      <div class="col-12 col-md-4" id="productBody">
+        <h1>Mi Perfil</h1>
+        <div class="row">
+          <div class="col-12 col-lg-6">
+            <div class="col">Foto de Perfil</div>
+            <div class="col">
+              <div class="row">
+                <div class="col-6"><img src="img/tree1.jpg" width=100% alt=""></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+          <br>
+
+          <div class="col-12 col-md-8">
+
+            <div class="col">
+              <div class="row">
+
+                <div class="col-12">
+                  <div class="col-6">Nombre y Apellido: </div>
+                  <div class="col-6"><input type="text" name="nombrePerfil" style="width: 100%;"></div>
+                </div>
+                <br>
+
+                <div class="col-12">
+                  <div class="col-6">Edad: </div>
+                  <div class="col-6"><input type="number" name="edadPerfil" min="1" style="width: 100%;"></div>
+                </div>
+                <br>
+
+                <div class="col-12">
+                  <div class="col-6">Email:</div>
+                  <div class="col-6"><input type="text" name="emailPerfil" style="width: 100%;"></div>
+                </div>
+                <br>
+
+                <div class="col-12">
+                  <div class="col-6">Telefono: </div>
+                  <div class="col-6"><input type="number" name="telPerfil" min="1" style="width: 100%;"></div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+
   <footer class="text-muted bg-light">
     <div class="container">
       <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>

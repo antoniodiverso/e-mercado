@@ -3,7 +3,7 @@ var maxPrecio;
 var minPrecio;
 
 function listaProductos(array) {
-    let contendio = "<br><hr><br>"
+    let contendio = ""
     for (let i = 0; i < array.length; i++ ) {
         let producto = array[i]
         if(((minPrecio == undefined) || (minPrecio != undefined && parseInt(producto.cost)>= minPrecio)) 
@@ -14,16 +14,20 @@ function listaProductos(array) {
 
              
                
-               `<div class="row">
-               <div class="col-2"><img src="` + producto.imgSrc + `" alt="` + producto.description + `" class="img-thumbnail"></div>
-               <div class="col">
-               <p>Precio: ${producto.cost}  </p>
-               <p>Nombre: ${producto.name}  </p>
-               <p>Descripción: ${producto.description} </p>
-               <button class="btn btn-secondary" id="verLibro" onclick=window.location='product-info.html'>Ver más</button>
-               <br><hr><br>
+               `<div class="col-12 col-md-4">
+               <div class="row">
+                 <div class="col-12"><img src="` + producto.imgSrc + `" alt="` + producto.description + `" class="img-thumbnail">
+                 </div>
+                 <div class="col-12">
+                   <p>Precio: ${producto.cost} </p>
+                   <p>Nombre: ${producto.name} </p>
+                   <p>Descripción: ${producto.description} </p>
+                 </div>
+                 <div class="col-12">
+                   <button class="btn btn-secondary" id="verLibro" onclick=window.location='product-info.html'>Ver más</button>
+                 </div>
                </div>
-               </div>`
+             </div>`
                     
     }
     
