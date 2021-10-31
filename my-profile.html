@@ -53,60 +53,75 @@
       </div>
     </div>
   </nav>
+  <br><br><br>
 
-  <div class="container" id="contenidoPerfil">
-    <br>
+  <div class="container">
+    <h1>Mi Perfil</h1>
+
     <div class="row">
-      <div class="col-12 col-md-4" id="productBody">
-        <h1>Mi Perfil</h1>
-        <div class="row">
-          <div class="col-12 col-lg-6">
+        <div class="col-12 col-md-4">
+
             <div class="row">
-            <div class="col">Foto de Perfil</div>
-            
-              
-                <div class="col-6"><img src="img/tree1.jpg" width=100% alt=""></div>
-              
-              </div>
-          </div>
+
+                
+                    <div class="col-12" style="border-style: groove;"><img id="imagenPerfil" src="" alt="" style="width: 100%;"></div>
+
+                    <div class="col-12" style="text-align: center;"><input type="text" id="inputUrl" placeholder="Ingrese URL de imagen"></div>
+                          
+            </div><br>
+
+
         </div>
-      </div>
-          <br>
 
-          <div class="col-12 col-md-8">
-
-            <div class="col">
-              <div class="row">
-
+        <div class="col-12 col-md-8" id="colDeInputs">
+            <div class="row">
                 <div class="col-12">
-                  <div class="col-6">Nombre y Apellido:</div>
-                  <div class="col-6"><input type="text" name="nombrePerfil" style="width: 100%;"></div>
-                </div>
-                <br>
+                    <div class="row">
+                        <div class="col-6 col-md-3" style="text-align: right;">Nombre y Apellido:</div>
 
-                <div class="col-12">
-                  <div class="col-6">Edad: </div>
-                  <div class="col-6"><input type="number" name="edadPerfil" min="1" style="width: 100%;"></div>
-                </div>
-                <br>
-
-                <div class="col-12">
-                  <div class="col-6">Email:</div>
-                  <div class="col-6"><input type="text" name="emailPerfil" style="width: 100%;"></div>
-                </div>
-                <br>
-
-                <div class="col-12">
-                  <div class="col-6">Telefono: </div>
-                  <div class="col-6"><input type="number" name="telPerfil" min="1" style="width: 100%;"></div>
+                        <div class="col-6"><input type="text" name="nombrePerfil" id="inputName" value="" style="width: 100%;"></div>
+                    </div><br>
                 </div>
 
-              </div>
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-6 col-md-3" style="text-align: right;">Edad:</div>
+
+                        <div class="col-6"><input type="number" name="edadPerfil" id="inputEdad" min="1" style="width: 100%;"></div>
+                    </div><br>
+                </div>
+
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-6 col-md-3" style="text-align: right;">Email:</div>
+
+                        <div class="col-6"><input type="text" name="emailPerfil" id="inputEmail" style="width: 100%;"></div>
+                    </div><br>
+                </div>
+
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-6 col-md-3" style="text-align: right;">Telefono:</div>
+
+                        <div class="col-6"><input type="number" name="telPerfil" id="inputTel" min="1" style="width: 100%;"></div>
+                    </div>
+                </div>
             </div>
+        </div>
+        <div  class="col-12">
+          <br>
+          <div class="row">
+            <div class="col-1"></div>
+            <div class="col-5"><button id="guardarImagen" class="btn btn-success">Guardar Imagen</button></div>
+            <div class="col-6"><button class="btn btn-success" id="guardarDatos">Guardar Datos</button></div>
           </div>
+
         </div>
 
-      </div>
+
+    </div>
+ 
+</div>  
 
 
 
