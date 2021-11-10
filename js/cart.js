@@ -56,8 +56,11 @@ function mostrarCarrito(productoCarrito) {
                         </div>
                         <br><br>
                     <div class="col">
-                        <button class="btn btn-success">Proceder con la compra</button>
-                    </div>
+                        <button class="btn btn-success">Método de pago</button>
+                    </div><br>
+                    <div class="col">
+                    <button class="btn btn-primary">Finalizar Compra</button>
+                </div>
                 
                         </div>
             </div>
