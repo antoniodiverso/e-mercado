@@ -4,6 +4,7 @@
 //<div class="col">${productoCarrito[0].count}</div>
 var infoCarrito;
 
+
 function mostrarCarrito(productoCarrito) {
     let contenidoCarrito = ""
     contenidoCarrito += `
@@ -56,10 +57,11 @@ function mostrarCarrito(productoCarrito) {
                         </div>
                         <br><br>
                     <div class="col">
-                        <button class="btn btn-success">Método de pago</button>
+                        <button class="btn btn-success" data-toggle="modal" data-target="#modalMetodoPago">Método de pago</button>
                     </div><br>
                     <div class="col">
                     <button class="btn btn-primary">Finalizar Compra</button>
+                    
                 </div>
                 
                         </div>

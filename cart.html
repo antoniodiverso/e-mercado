@@ -81,8 +81,45 @@
         </div>
 
       </div>
-   
 
+    </div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalMetodoPago" tabindex="-1" aria-labelledby="tituloModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="tituloModal">Método de pago</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="modalInputTarjeta">Número de tarjeta</label>
+            <input type="number" class="form-control" id="modalInputTarjeta" aria-describedby="modalInputTarjetaHelp">
+            <small id="modalInputTarjetaHelp" class="form-text text-muted">Ingrese los 16 dígitos de la tarjeta</small>
+          </div>
+          <div class="form-group">
+            <label for="modalInputVencimiento">Fecha de vencimiento</label>
+            <input type="date" class="form-control" id="modalInputVencimiento">
+          </div>
+          <div class="form-group">
+            <label for="modalInputCvc">CVC</label>
+            <input type="number" class="form-control" id="modalInputCvc" aria-describedby="modalInputCvcHelp" style="width: 25%;">
+            <small id="modalInputCvcHelp" class="form-text text-muted">Ingrese los 3 dígitos</small>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="submit" class="btn btn-primary">Guardar datos</button>
+      </div>
+    </div>
+  </div>
+</div>
+  
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>
