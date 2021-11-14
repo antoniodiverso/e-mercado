@@ -3,6 +3,54 @@
 //elementos HTML presentes.
 //<div class="col">${productoCarrito[0].count}</div>
 var infoCarrito;
+var modalTarjeta;
+var modalBanco;
+
+function mostrarModalTarjeta(){
+    document.getElementById('contenidoModal').innerHTML = '';
+    let contenidoModal = ""
+
+
+    contenidoModal = `   <form>
+    <div class="form-group">
+      <label for="modalInputTarjeta">Número de tarjeta</label>
+      <input type="number" class="form-control" id="modalInputTarjeta" aria-describedby="modalInputTarjetaHelp">
+      <small id="modalInputTarjetaHelp" class="form-text text-muted">Ingrese los 16 dígitos de la tarjeta</small>
+    </div>
+    <div class="form-group">
+      <label for="modalInputVencimiento">Fecha de vencimiento</label>
+      <input type="date" class="form-control" id="modalInputVencimiento">
+    </div>
+    <div class="form-group">
+      <label for="modalInputCvc">CVC</label>
+      <input type="number" class="form-control" id="modalInputCvc" aria-describedby="modalInputCvcHelp" style="width: 25%;">
+      <small id="modalInputCvcHelp" class="form-text text-muted">Ingrese los 3 dígitos</small>
+    </div>
+  </form>`
+
+  document.getElementById('contenidoModal').innerHTML += contenidoModal;
+}
+
+function mostrarModalBanco(){
+    document.getElementById('contenidoModal').innerHTML = '';
+    let contenidoModal = ""
+
+
+    contenidoModal = `<form>
+    <div class="form-group">
+      <label for="modalInputCuentaOrigen">Número de cuenta origen</label>
+      <input type="number" class="form-control" id="modalInputCuentaOrigen" aria-describedby="modalInputCuentaOrigen">
+    </div>
+    <div class="form-group">
+      <label for="modalInputLlaveDigital">Llave digital</label>
+      <input type="password" class="form-control" id="modalInputLlaveDigital">
+    </div>
+  </form>`
+
+  document.getElementById('contenidoModal').innerHTML += contenidoModal;
+}
+
+
 
 
 function mostrarCarrito(productoCarrito) {
@@ -50,8 +98,14 @@ function mostrarCarrito(productoCarrito) {
                     <div class="row">
                     
 
+                        <div class="col-6">Subtotal</div>
+                        <div class="col-6" id="importeSubtotal">${(productoCarrito[0].unitCost) * (productoCarrito[0].count)}UYU</div>
+
+                        <div class="col-6">Envío</div>
+                        <div class="col-6" id="valorEnvio"></div>
+
                         <div class="col-6">Total</div>
-                        <div class="col-6" id="totalProductos" >${(productoCarrito[0].unitCost) * (productoCarrito[0].count)}UYU</div>
+                        <div class="col-6" id="importeTotal">UYU</div>
                         
                         </div>
                         </div>
@@ -75,12 +129,42 @@ function mostrarCarrito(productoCarrito) {
     document.getElementById("contenidoCarrito").innerHTML += contenidoCarrito;
 }
 
+function alertajaja(){
+    alert('LOL');
+}
+
 function calcularSub(precioUni) {
     let cantidad = parseInt(document.getElementById(`numCantidad`).value);
     subtotal = precioUni * cantidad;
     document.getElementById(`subtotalProductos`).innerHTML = subtotal + "UYU";
-    document.getElementById(`totalProductos`).innerHTML = subtotal + "UYU";
+    document.getElementById(`importeSubtotal`).innerHTML = subtotal + "UYU";
 }
+
+function calcularEnvío(){
+    precioUni = 100;
+    let cantidad = parseInt(document.getElementById(`numCantidad`).value);
+    subtotal = precioUni * cantidad;
+   
+    let envio; 
+    let selectEnvio = document.getElementById("selectEnvio").value;
+    
+        if (selectEnvio == 1){
+            envio = ((15*(subtotal))/100);
+            document.getElementById("valorEnvio").innerHTML = envio + " UYU";
+        }
+        else if (selectEnvio == 2) {
+            envio = ((7*(subtotal))/100);
+            document.getElementById("valorEnvio").innerHTML = envio + " UYU";
+        } else if (selectEnvio == 3) {
+            envio = ((5*(subtotal))/100);
+            document.getElementById("valorEnvio").innerHTML = envio + " UYU";
+        }
+
+        //document.getElementById("importeTotal").innerHTML = (subtotal + envio) + " UYU";
+           
+}
+
+
 
 
 
@@ -97,7 +181,24 @@ document.addEventListener("DOMContentLoaded", function (e) {
             mostrarCarrito(infoCarrito);
         }
     })
+    console.log(document.getElementById("selectEnvio").value);
+    
 
+
+
+});
+
+document.getElementById("pagoTarjeta").addEventListener("click", function (){ 
+    mostrarModalTarjeta()
+   
+    
+
+
+});
+
+document.getElementById("pagoBanco").addEventListener("click", function (){ 
+    mostrarModalBanco()
+    
 
 
 });

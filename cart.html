@@ -73,10 +73,10 @@
 
           <div class="col-2">Tipo de envío:</div>
           <div class="col-10">
-          <select name="selectEnvio" id="selectEnvio">
-          <option value="1">Premium (2-5 días)</option>
-          <option value="2">Express (5-8 días)</option>
-          <option value="3">Standar (12-15 días)</option>
+          <select name="selectEnvio" id="selectEnvio" onchange="calcularEnvío()">
+          <option  value="1">Premium (2-5 días)</option>
+          <option  value="2">Express (5-8 días)</option>
+          <option  value="3">Standar (12-15 días)</option>
         </select>
         </div>
 
@@ -94,23 +94,10 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        <form>
-          <div class="form-group">
-            <label for="modalInputTarjeta">Número de tarjeta</label>
-            <input type="number" class="form-control" id="modalInputTarjeta" aria-describedby="modalInputTarjetaHelp">
-            <small id="modalInputTarjetaHelp" class="form-text text-muted">Ingrese los 16 dígitos de la tarjeta</small>
-          </div>
-          <div class="form-group">
-            <label for="modalInputVencimiento">Fecha de vencimiento</label>
-            <input type="date" class="form-control" id="modalInputVencimiento">
-          </div>
-          <div class="form-group">
-            <label for="modalInputCvc">CVC</label>
-            <input type="number" class="form-control" id="modalInputCvc" aria-describedby="modalInputCvcHelp" style="width: 25%;">
-            <small id="modalInputCvcHelp" class="form-text text-muted">Ingrese los 3 dígitos</small>
-          </div>
-        </form>
+      <div id="formasDePago" style="text-align: center;">
+        <button type="button" id="pagoTarjeta" class="btn btn-secondary">Tarjeta crédito/débito</button><button type="button" id="pagoBanco" class="btn btn-primary">Transferencia de banco</button>
+      </div>
+      <div class="modal-body" id="contenidoModal">
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
