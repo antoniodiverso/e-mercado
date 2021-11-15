@@ -5,8 +5,10 @@
 var infoCarrito;
 var modalTarjeta;
 var modalBanco;
+var modoPago = "";
 
-function mostrarModalTarjeta(){
+
+function mostrarModalTarjeta() {
     document.getElementById('contenidoModal').innerHTML = '';
     let contenidoModal = ""
 
@@ -28,10 +30,10 @@ function mostrarModalTarjeta(){
     </div>
   </form>`
 
-  document.getElementById('contenidoModal').innerHTML += contenidoModal;
+    document.getElementById('contenidoModal').innerHTML += contenidoModal;
 }
 
-function mostrarModalBanco(){
+function mostrarModalBanco() {
     document.getElementById('contenidoModal').innerHTML = '';
     let contenidoModal = ""
 
@@ -47,7 +49,7 @@ function mostrarModalBanco(){
     </div>
   </form>`
 
-  document.getElementById('contenidoModal').innerHTML += contenidoModal;
+    document.getElementById('contenidoModal').innerHTML += contenidoModal;
 }
 
 
@@ -74,8 +76,8 @@ function mostrarCarrito(productoCarrito) {
 
             <div class="col-12 col-lg-2">
                 <div class="col">Cantidad</div>
-                <div class="col"><input type="number" onkeydown="return false" onchange="calcularSub(${productoCarrito[0].unitCost})" value="${productoCarrito[0].count}" id="numCantidad" name="numCantidad" min="1" style="width: 50px;"></div>
-            </div>
+                <div class="col"><input type="number" onkeydown="return false" onchange="calcularImportes(${productoCarrito[0].unitCost}), mostrarImporteTotal()" value="${productoCarrito[0].count}" id="numCantidad" name="numCantidad" min="1" style="width: 50px;"></div>
+                </div>
             
 
             <div class="col-12 col-lg-2">
@@ -99,13 +101,16 @@ function mostrarCarrito(productoCarrito) {
                     
 
                         <div class="col-6">Subtotal</div>
-                        <div class="col-6" id="importeSubtotal">${(productoCarrito[0].unitCost) * (productoCarrito[0].count)}UYU</div>
+                        <div class="col-3" id="importeSubtotal" style="text-align: right;">${(productoCarrito[0].unitCost) * (productoCarrito[0].count)}</div>
+                        <div class="col-3">UYU</div>
 
                         <div class="col-6">Envío</div>
-                        <div class="col-6" id="valorEnvio"></div>
+                        <div class="col-3" id="valorEnvio" style="text-align: right;">30</div>
+                        <div class="col-3">UYU</div>
 
                         <div class="col-6">Total</div>
-                        <div class="col-6" id="importeTotal">UYU</div>
+                        <div class="col-3" id="mostrarTotal" style="text-align: right;">230</div>
+                        <div class="col-3">UYU</div>
                         
                         </div>
                         </div>
@@ -114,9 +119,12 @@ function mostrarCarrito(productoCarrito) {
                         <button class="btn btn-success" data-toggle="modal" data-target="#modalMetodoPago">Método de pago</button>
                     </div><br>
                     <div class="col">
-                    <button class="btn btn-primary">Finalizar Compra</button>
+                    <button onclick="funcionFinalizarCompra()" class="btn btn-primary" id="finalizarCompra">Finalizar Compra</button>
+                    
                     
                 </div>
+                    <div id="alertaMetodoPago" style="color: red;"></div><br>
+                    <div id="alertaMetodoEnvio" style="color: red;"></div>
                 
                         </div>
             </div>
@@ -129,46 +137,117 @@ function mostrarCarrito(productoCarrito) {
     document.getElementById("contenidoCarrito").innerHTML += contenidoCarrito;
 }
 
-function alertajaja(){
-    alert('LOL');
-}
-
-function calcularSub(precioUni) {
+function calcularImportes(precioUni) {
+    //Calculo del subtotal
     let cantidad = parseInt(document.getElementById(`numCantidad`).value);
     subtotal = precioUni * cantidad;
     document.getElementById(`subtotalProductos`).innerHTML = subtotal + "UYU";
-    document.getElementById(`importeSubtotal`).innerHTML = subtotal + "UYU";
-}
+    document.getElementById(`importeSubtotal`).innerHTML = subtotal;
 
-function calcularEnvío(){
-    precioUni = 100;
-    let cantidad = parseInt(document.getElementById(`numCantidad`).value);
-    subtotal = precioUni * cantidad;
-   
-    let envio; 
+    //Calculo del envío por separado
+    let envio;
     let selectEnvio = document.getElementById("selectEnvio").value;
-    
-        if (selectEnvio == 1){
-            envio = ((15*(subtotal))/100);
-            document.getElementById("valorEnvio").innerHTML = envio + " UYU";
-        }
-        else if (selectEnvio == 2) {
-            envio = ((7*(subtotal))/100);
-            document.getElementById("valorEnvio").innerHTML = envio + " UYU";
-        } else if (selectEnvio == 3) {
-            envio = ((5*(subtotal))/100);
-            document.getElementById("valorEnvio").innerHTML = envio + " UYU";
-        }
 
-        //document.getElementById("importeTotal").innerHTML = (subtotal + envio) + " UYU";
-           
+    if (selectEnvio == 1) {
+        envio = ((15 * (subtotal)) / 100);
+        document.getElementById("valorEnvio").innerHTML = envio;
+    }
+    else if (selectEnvio == 2) {
+        envio = ((7 * (subtotal)) / 100);
+        document.getElementById("valorEnvio").innerHTML = envio;
+    } else if (selectEnvio == 3) {
+        envio = ((5 * (subtotal)) / 100);
+        document.getElementById("valorEnvio").innerHTML = envio;
+    }
+
+
 }
 
+function mostrarImporteTotal() {
+    total = 0;
+    total = parseInt(document.getElementById(`subtotalProductos`).innerHTML) + parseInt(document.getElementById(`valorEnvio`).innerHTML);
+    document.getElementById("mostrarTotal").innerHTML = `<div id="importeTotal" style="text-align: right;">${total}</div>`;
 
 
+}
+
+function validarPago() {
+    pagoValido = false;
 
 
+    if (modoPago == "Tarjeta") {
+        modalInputTarjeta = document.getElementById("modalInputTarjeta").value;
+        modalInputVencimiento = document.getElementById("modalInputVencimiento").value;
+        modalInputCvc = document.getElementById("modalInputCvc").value;
+        if (modalInputTarjeta == "" || modalInputVencimiento == "" || modalInputCvc == "") {
+            pagoValido = false;
+            document.getElementById("alertaMetodoPago").innerHTML = "Llene los datos de la tarjeta";
+        }
+        else {
+            pagoValido = true;
+            document.getElementById("alertaMetodoPago").innerHTML = "";
+        }
+    }
+    else if (modoPago == "Cuenta") {
+        modalInputCuentaOrigen = document.getElementById("modalInputCuentaOrigen").value;
+        modalInputLlaveDigital = document.getElementById("modalInputLlaveDigital").value;
+        if (modalInputCuentaOrigen == "" || modalInputLlaveDigital == "") {
+            pagoValido = false;
+            document.getElementById("alertaMetodoPago").innerHTML = "Llene los datos de la cuenta bancaria";
+        }
+        else {
+            pagoValido = true;
+            document.getElementById("alertaMetodoPago").innerHTML = "";
+        }
+    }
+    else if (modoPago == "") {
+        pagoValido = false;
+        document.getElementById("alertaMetodoPago").innerHTML = "Seleccione método de pago";
+    }
 
+
+    return pagoValido;
+
+}
+
+function validarDatosEnvio(){
+    envioValido = false;
+    calle = document.getElementById("calle").value;
+    numero = document.getElementById("numero").value;
+    esquina = document.getElementById("esquina").value;
+    pais = document.getElementById("pais").value;
+
+    if (calle == "" || numero == "" || esquina == "" || pais == ""){
+        envioValido = false;
+        document.getElementById("alertaMetodoEnvio").innerHTML = "Llene los datos de el envío";
+    }else{
+        envioValido = true;
+        document.getElementById("alertaMetodoEnvio").innerHTML = "";
+    }
+
+    return envioValido;
+
+}
+
+function validarCarrito(){
+    if (validarDatosEnvio() && validarPago()){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+function funcionFinalizarCompra(){
+
+        if (validarCarrito()){
+            alert("Compra exitosa!");
+            window.location = "cart.html"
+        }
+
+    
+    
+
+}
 
 
 document.addEventListener("DOMContentLoaded", function (e) {
@@ -181,24 +260,26 @@ document.addEventListener("DOMContentLoaded", function (e) {
             mostrarCarrito(infoCarrito);
         }
     })
-    console.log(document.getElementById("selectEnvio").value);
-    
-
 
 
 });
 
-document.getElementById("pagoTarjeta").addEventListener("click", function (){ 
+
+document.getElementById("pagoTarjeta").addEventListener("click", function () {
     mostrarModalTarjeta()
-   
-    
+    modoPago = "Tarjeta";
+
+
 
 
 });
 
-document.getElementById("pagoBanco").addEventListener("click", function (){ 
+document.getElementById("pagoBanco").addEventListener("click", function () {
     mostrarModalBanco()
-    
+    modoPago = "Cuenta";
 
 
 });
+
+
+
