@@ -13,7 +13,7 @@ function mostrarModalTarjeta() {
     let contenidoModal = ""
 
 
-    contenidoModal = `   <form>
+    contenidoModal = `<form>
     <div class="form-group">
       <label for="modalInputTarjeta">Número de tarjeta</label>
       <input type="number" class="form-control" id="modalInputTarjeta" aria-describedby="modalInputTarjetaHelp">
